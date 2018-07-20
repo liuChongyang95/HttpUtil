@@ -116,6 +116,24 @@ public class UpLoadUtil {
      * @return String result of Service response
      * @throws IOException
      */
+
+    /*
+    *
+    *
+    *
+    * 例子
+    * 方法调用参数格式。
+final Map<String, String> params = new HashMap<String, String>();//参数②
+params.put("send_userId", String.valueOf(id));
+params.put("send_email", address);
+params.put("send_name", name);
+params.put("receive_email", emails);
+
+final Map<String, File> files = new HashMap<String, File>();//参数③
+files.put("uploadfile", file);
+final String request = UpLoadUtil.post(requestURL, params, files);
+    * */
+
     public static String post(String url, Map<String, String> params, Map<String, File> files) throws IOException {
         String BOUNDARY = java.util.UUID.randomUUID().toString();
         String PREFIX = "--", LINEND = "\r\n";
@@ -133,11 +151,11 @@ public class UpLoadUtil {
         conn.setRequestProperty("Content-Type", MULTIPART_FROM_DATA + ";boundary=" + BOUNDARY);
         // 首先组拼文本类型的参数
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<String, String> entry : params.entrySet()) {
+        for (Map.Entry<String, String> entry : params.entrySet()) {//map.entry是快速获取键值和value，一种简化遍历
             sb.append(PREFIX);
             sb.append(BOUNDARY);
             sb.append(LINEND);
-            sb.append("Content-Disposition: form-data; name=\"" + entry.getKey() + "\"" + LINEND);
+            sb.append("Content-Disposition: form-data; name=\"" + entry.getKey() + "\"" + LINEND);//getkey是键值
             sb.append("Content-Type: text/plain; charset=" + CHARSET + LINEND);
             sb.append("Content-Transfer-Encoding: 8bit" + LINEND);
             sb.append(LINEND);
