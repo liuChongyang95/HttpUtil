@@ -156,7 +156,7 @@ final String request = UpLoadUtil.post(requestURL, params, files);
             sb.append(BOUNDARY);
             sb.append(LINEND);
             sb.append("Content-Disposition: form-data; name=\"" + entry.getKey() + "\"" + LINEND);//getkey是键值
-            sb.append("Content-Type: text/plain; charset=" + CHARSET + LINEND);
+            sb.append("Content-Type: audio/mp3; charset=" + CHARSET + LINEND);//text/plain 原文content-type的格式。不清楚text/plain 代表的sor是什么格式。********
             sb.append("Content-Transfer-Encoding: 8bit" + LINEND);
             sb.append(LINEND);
             sb.append(entry.getValue());
